@@ -122,3 +122,14 @@ $text1 = "Demain dès l'aube à l'heure où blanchit la campagne, je partirai. V
 // error_log('string_to_array 150');
 // error_log(print_r(HArray::string_to_array($text1, 150), true));
 
+/* ************************************************* */
+/* ************** HArray::array_insert ************* */
+/* ************************************************* */
+
+$array = ['pomme', 'poire', 'fraise', 'banane'];
+$array = HArray::array_insert($array, 'kiwi', 2);
+error_log(print_r($array, true));
+
+$array = ['pomme', 'poire', 'fraise', 'banane'];
+$array = HArray::array_insert($array, ['kiwi', 'mangue'], 2);
+error_log(print_r($array, true));

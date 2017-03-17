@@ -216,4 +216,41 @@ class HArray
         }
         return $phrases;
     }
+
+    /**
+     * Inserts an element at a given position in an array
+     *
+     * @param array $array
+     * @param mixed $insert Value to insert in array (string or array)
+     * @param int $position Position where to insert in array
+     */
+    public static function array_insert($array, $insert, $position)
+    {
+        if(!is_array($insert))
+        {
+            $insert = [$insert];
+        }
+
+        # Insert at start
+        if($position==0)
+        {
+            $array = array_merge($insert, $array);
+        }
+        else
+        {
+            # Insert at end
+            if($position >= (count($array)-1))
+            {
+                $array = array_merge($array, $insert);
+            }
+            else
+            {
+                # Split into head and tail, then merge head+inserted bit+tail
+                $head = array_slice($array, 0, $position);
+                $tail = array_slice($array, $position);
+                $array = array_merge($head, $insert, $tail);
+            }
+        }
+        return $array;
+    }
 }
